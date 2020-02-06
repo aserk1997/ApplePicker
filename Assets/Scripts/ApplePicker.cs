@@ -1,10 +1,10 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ApplePicker : MonoBehaviour
-
 {
     [Header("Set in Inspector")]
     public GameObject basketPrefab;
@@ -13,12 +13,6 @@ public class ApplePicker : MonoBehaviour
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
 
-    internal void AppleDestroyed()
-    {
-        throw new NotImplementedException();
-    }
-
-    // Use this for initialization
     void Start()
     {
         basketList = new List<GameObject>();
@@ -29,6 +23,24 @@ public class ApplePicker : MonoBehaviour
             pos.y = basketBottomY + (basketSpacingY * i);
             tBasketGO.transform.position = pos;
             basketList.Add(tBasketGO);
+        }
+    }
+
+    public void AppleDestroyed()
+    {
+        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
+        foreach (GameObject tGo in tAppleArray)
+        {
+            Destroy(tGo);
+        }
+        int basketIndex = basketList.Count - 1;
+        GameObject tBasketGO = basketList[basketIndex];
+        basketList.RemoveAt(basketIndex);
+        Destroy(tBasketGO);
+
+        if (basketList.Count == 0)
+        {
+            SceneManager.LoadScene("_Scene_0");
         }
     }
 }
