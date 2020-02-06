@@ -1,37 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Basket : MonoBehaviour {
-    private Vector3 pos;
+public class Basket : MonoBehaviour
+{
 
-    // Use this for initialization
-    void Update() {
-        // Get screen position of mouse from input
+    [Header("Set Dynamically")]
+    public Text scoreGT;
+    // Start is called before the first frame update
+    void Start()
+    {
+        GameObject scoreGO = GameObject.Find("ScoreCounter");
+        scoreGT = scoreGO.GetComponent<Text>();
+        scoreGT.text = "0";
+    }
 
-        Vector3 mousePos2D = Input.mousePosition; //a
-
-        //The Camera's z position sets how far the to push the mouse
-
-        mousePos2D.z = -Camera.main.transform.position.z; //b
-
-        //Convert 2D to 3D
-
+    // Update is called once per frame
+    void Update()
+    {
+        //getting the current mouse position
+        Vector3 mousePos2D = Input.mousePosition;
+        //the camera's z position sets how far to push the mouse into 3D
+        mousePos2D.z = -Camera.main.transform.position.z;
         Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(mousePos2D);
 
         Vector3 pos = this.transform.position;
-
         pos.x = mousePos3D.x;
-
         this.transform.position = pos;
-
     }
-    private void OnCollisionEnter(Collision coll)
+
+    void OnCollisionEnter(Collision coll)
     {
-        GameObject collidedWith = coll.gameObject;
-        if (collidedWith.tag == "Apple")
+        GameObject collideWith = coll.gameObject;
+        if (collideWith.tag == "Apple")
         {
-            Destroy(collidedWith);
+            Destroy(collideWith);
+
+            int score = int.Parse(scoreGT.text);
+            score += 100;
+            scoreGT.text = score.ToString();
+
+            if (score > HighScore.score)
+            {
+                HighScore.score = score;
+            }
         }
     }
 }
