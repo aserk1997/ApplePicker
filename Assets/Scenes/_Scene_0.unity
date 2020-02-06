@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 534669902}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &77872569
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 729115795}
   - component: {fileID: 729115797}
   - component: {fileID: 729115796}
+  - component: {fileID: 729115798}
   m_Layer: 5
   m_Name: HighScore
   m_TagString: Untagged
@@ -533,6 +534,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 729115794}
   m_CullTransparentMesh: 0
+--- !u!114 &729115798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729115794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7bd04b51c81964ebfb4c0f72a128c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1996840069
 GameObject:
   m_ObjectHideFlags: 0

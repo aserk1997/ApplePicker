@@ -14,7 +14,7 @@ public class AppleTree : MonoBehaviour {
     public float leftAndRightEdge = 10f;
 
     //Rate of Appletree is being instantiated
-    public float secondsBetweenAppleDrops = 1f;
+    public float secondsBetweenAppleDrops = .1f;
 
     public float Speed
     {
